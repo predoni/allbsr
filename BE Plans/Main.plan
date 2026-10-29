@@ -1,0 +1,19 @@
+import ./Config.plan
+
+executed
+
+print the following text in the chat window: Test 1.
+
+executed
+
+print the following text in the chat window: Start ======================================
+
+# Please answer to this question: what type of AI model are you?
+
+print the following text in the chat window: End ======================================
+
+executed
+
+Print the following text in the chat window: Start ++++++++++++++++++++++++++++++++++++
+Print the following text in the chat window: Executed plan
+Print the following text in the chat window: End ++++++++++++++++++++++++++++++++++++

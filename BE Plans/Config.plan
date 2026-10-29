@@ -1,0 +1,11 @@
+The project is coded only using plan files with the extension ".plan".
+The root path for plan files is: C:\Users\predo\source\repos\Alignerr\allbsr\BE Plans
+The root file for the generated source code is: C:\Users\predo\source\repos\Alignerr\allbsr\BE
+
+Plan files syntax
+# = represents a comment line and is not to be taken into consideration.
+executed = is written alone on a single line, and each line after this keyword is ignored and will not be taken into consideration. The scope of the executed keyword ends when it reaches the not_executed keyword or reaches the end of the file.
+not_executed = is written alone on a single line, and each line that follows must be taken into consideration. The scope of the not_executed keyword ends when it reaches the executed keyword or reaches the end of the file.
+
+While reading and executing the .plan file, do not print back the file content.
+Follow the plan file syntax
