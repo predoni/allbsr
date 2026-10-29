@@ -135,3 +135,30 @@ MAILERS = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS=["http://localhost:4200"]
+
+
+# Django REST Framework
+# Every endpoint requires a valid token unless the view explicitly says otherwise
+# (e.g. LoginView and user registration set their own permission_classes).
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'api.users.authentication.UserTokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    # Rate limits for the anonymous endpoints. Views opt in with
+    # `throttle_classes = [ScopedRateThrottle]` + `throttle_scope = '<name>'`.
+    # Counted per client IP, stored in the cache.
+    'DEFAULT_THROTTLE_RATES': {
+        'login': '10/minute',            # slows down password guessing
+        'password_reset': '3/hour',      # limits the "lock someone out" nuisance
+        'password_reset_confirm': '10/minute',  # slows down token guessing
+    },
+}
+
+# Speed up tests: real password hashing is intentionally slow (good in production,
+# painful when every test creates users). Only applies when running `manage.py test`.
+import sys
+if 'test' in sys.argv:
+    PASSWORD_HASHERS = ['django.contrib.auth.hashers.MD5PasswordHasher']
